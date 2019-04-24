@@ -152,9 +152,9 @@ Hero.prototype.heroAttack = function(villain) {
     return `${this.name} has defeated ${villain.name}!`;
   }
 
-  return `${this.name} attacked ${villain.name}! ${villain.name} has ${
-    villain.healthPoints
-  } HP left.`;
+  return `${this.name} attacked ${
+    villain.name
+  }! ${villain.takeDamage()} Remaining HP: ${villain.healthPoints}`;
 };
 
 const Villain = function(villainProps) {
@@ -176,9 +176,9 @@ Villain.prototype.villainAttack = function(hero) {
     return `${this.name} has defeated ${hero.name}!`;
   }
 
-  return `${this.name} attacked ${hero.name}! ${hero.name} has ${
-    hero.healthPoints
-  } HP left.`;
+  return `${this.name} attacked ${
+    hero.name
+  }! ${hero.takeDamage()} Remaining HP: ${hero.healthPoints}`;
 };
 
 const superDude = new Hero({
