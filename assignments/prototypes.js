@@ -141,17 +141,20 @@ const Hero = function(heroProps) {
 Hero.prototype = Object.create(Humanoid.prototype);
 
 Hero.prototype.heroAttack = function(villain) {
+  // Check if the hero's HP is still above 0, if true then do damage else return statement
   if (this.healthPoints > 0) {
     villain.healthPoints -= Math.floor(Math.random() * 5) + 1;
   } else {
     return `${this.name} has been defeated and can no longer attack.`;
   }
 
+  // Check if the opponent's HP has reached <= 0
   if (villain.healthPoints <= 0) {
     villain.destroy();
     return `${this.name} has defeated ${villain.name}!`;
   }
 
+  // Return combat log
   return `${this.name} attacked ${
     villain.name
   }! ${villain.takeDamage()} Remaining HP: ${villain.healthPoints}`;
@@ -165,17 +168,20 @@ const Villain = function(villainProps) {
 Villain.prototype = Object.create(Humanoid.prototype);
 
 Villain.prototype.villainAttack = function(hero) {
+  // Check if the villain's HP is still above 0, if true then do damage else return statement
   if (this.healthPoints > 0) {
     hero.healthPoints -= Math.floor(Math.random() * 5) + 1;
   } else {
     return `${this.name} has been defeated and can no longer attack.`;
   }
 
+  // Check if the opponent's HP has reached <= 0
   if (hero.healthPoints <= 0) {
     hero.destroy();
     return `${this.name} has defeated ${hero.name}!`;
   }
 
+  // Return combat log
   return `${this.name} attacked ${
     hero.name
   }! ${hero.takeDamage()} Remaining HP: ${hero.healthPoints}`;
